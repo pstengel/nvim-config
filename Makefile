@@ -8,7 +8,7 @@ LINKS = $(addprefix $(HOME)/,.config/nvim .local/share/nvim)
 all: install
 
 clean:
-	rm -f $(LINKS) $(FONT_PATH)/Inconsolata-Regular.ttf \
+	rm -rf $(LINKS) $(FONT_PATH)/Inconsolata-Regular.ttf \
 		$(FONT_PATH)/Inconsolata-Bold.ttf
 	git clean -ffdx
 

@@ -7,8 +7,8 @@ A system architect's NeoVim config.
 A `Makefile` is included to aid with setup. To use it,
 [Homebrew](https://brew.sh) must be installed. TL;DR:
 
-    git clone https://github.com/pstengel/nvim-config.git
-    cd nvim-config
+    git clone https://github.com/pstengel/nvim-config.git && cd nvim-config
+    git submodule update --init
     make clean
     make install
 

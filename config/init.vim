@@ -68,6 +68,7 @@ set undofile                         " Persist undo across sessions
 
 " Display
 au          VimResized * :wincmd=              " Resize splits when windows are resized... duh
+au          VimLeave * set guicursor=a:ver100-blinkoff0
 colorscheme base16-chalk                       " Use this colorscheme
 let         g:airline_theme='base16_chalk'     " Use it for airline too
 let         g:ansible_attribute_highlight='ab' " Ansible custom highlights

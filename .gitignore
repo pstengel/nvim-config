@@ -1,4 +1,7 @@
-config/.netrwhist
+.backups
+
+config/**/*
+!config/init.vim
 
 local/**/*
 !local/site/autoload

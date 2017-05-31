@@ -1,34 +1,50 @@
 # nvim-config
 
-A system architect's NeoVim config.
+A Site Reliability Engineer's [NeoVim](https://neovim.io) config.
 
 ## Usage
 
-A `Makefile` is included to aid with setup. To use it,
-[Homebrew](https://brew.sh) must be installed. TL;DR:
+A `Makefile` is included to aid with setup. The following will clone the
+repository to the current directory, make a backup of your existing NeoVim
+configuration, **remove your existing NeoVim configuration**, and install the
+symlinks necessary for the repository to begin managing the NeoVim
+configuration:
 
     git clone https://github.com/pstengel/nvim-config.git && cd nvim-config
-    git submodule update --init
-    make clean
+    make force-uninstall
     make install
 
-**IF YOU WANT TO KEEP YOUR EXISTING CONFIG, BACK IT UP BEFORE RUNNING THIS!**
+If you want to revert, the backup will be located in the `.backups` directory
+in the root of the repository.
 
-### make clean
+## Makefile Targets
 
-The `clean` target will remove any existing config and the Inconsolata fonts.
-In addition, `git clean` will be run on the cloned repository to remove any
-downloaded plugins, stale swap files, etc.
+### backup
 
-### make install
+    make backup
 
-This does the following to install the config:
+Creates a backup of the existing NeoVim configuration in the `.backups`
+directory at the root of the repository.
 
-1. Download the latest Inconsolata font from Google Fonts to `~/Library/Fonts`
-2. Symlink `~/.config/nvim -> config/` and `~/.local/share/nvim -> local/`
-3. Install NeoVim through Homebrew
-4. Run `PlugInstall` to install the configured vim plugins
+This target may emit an error if a NeoVim configuration does not already exist.
+These can safely be ignored.
 
-### make update
+### force-uninstall
 
-Use this to update the configured vim plugins and Inconsolata font.
+    make force-uninstall
+
+**Forcefully remove any existing NeoVim configuration**. `make backup` is an
+automatic prerequisite of this command.
+
+### install
+
+    make install
+
+Create symlinks to the NeoVim configuration managed by this repository.
+
+### uninstall
+
+    make uninstall
+
+Remove symlinks for the NeoVim configuration managed by this repository only if
+the existing configuration is linked to using symlinks.

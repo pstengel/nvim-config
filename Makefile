@@ -12,6 +12,7 @@ force-uninstall: backup
 	rm -vfR $(LINKS)
 
 install: $(LINKS)
+	git submodule update --init
 	nvim -u <(sed '/call plug#end()/q' config/init.vim) +PlugInstall +qall
 
 uninstall:

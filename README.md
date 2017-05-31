@@ -11,7 +11,6 @@ symlinks necessary for the repository to begin managing the NeoVim
 configuration:
 
     git clone https://github.com/pstengel/nvim-config.git && cd nvim-config
-    git submodule update --init
     make force-uninstall
     make install
 

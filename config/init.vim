@@ -17,6 +17,7 @@ Plug 'honza/vim-snippets'
 Plug 'tpope/vim-speeddating'
 Plug 'itspriddle/vim-stripper'
 Plug 'tpope/vim-surround'
+Plug 'janko-m/vim-test'
 
 " Syntax plugins
 Plug 'rosstimson/bats.vim'
@@ -102,3 +103,12 @@ inoremap <D-{> <ESC>:tabp<CR>a
 " EasyAlign mappings
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
+
+" vim-test config
+let test#strategy = "neovim"
+
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>

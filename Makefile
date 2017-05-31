@@ -2,18 +2,19 @@ SHELL := /bin/bash
 
 .PHONY: backup force-uninstall install uninstall update
 
-LINKS = $(addprefix $(HOME)/,.config/nvim .local/share/nvim)
+CONFIG = $(addprefix $(HOME)/,.config/nvim .local/share/nvim)
+LINKS = $(addprefix $(HOME)/,.config/nvim/init.vim .local/share/nvim/site/autoload)
 
 backup:
 	mkdir -p .backups
-	-tar -zcf .backups/nvim-config-`date +%s`.tar.gz $(LINKS)
+	-tar -zcf .backups/nvim-config-`date +%s`.tar.gz $(CONFIG)
 
 force-uninstall: backup
-	rm -vfR $(LINKS)
+	rm -vfR $(CONFIG)
 
 install: $(LINKS)
 	git submodule update --init
-	nvim -u <(sed '/call plug#end()/q' config/init.vim) +PlugInstall +qall
+	nvim -u <(sed '/call plug#end()/q' init.vim) +PlugInstall +PlugClean! +qall
 
 uninstall:
 	-for i in $(LINKS); do test -L $$i && rm -vf $$i; done
@@ -21,6 +22,10 @@ uninstall:
 update: install
 	nvim +PlugUpdate +qall
 
-$(LINKS):
+$(HOME)/.config/nvim/init.vim: init.vim
 	mkdir -p $(dir $@)
-	ln -s $(abspath $(firstword $(subst /, ,$(@:$(HOME)/.%=%)))) $@
+	ln -s $(abspath $<) $@
+
+$(HOME)/.local/share/nvim/site/autoload: vim-plug
+	mkdir -p $(dir $@)
+	ln -s $(abspath $<) $@

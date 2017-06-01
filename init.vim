@@ -1,17 +1,23 @@
 " Initialize vim-plug
 call plug#begin('~/.local/share/nvim/plugged')
 
+" fzf
+if executable("fzf")
+  Plug '/usr/local/opt/fzf'
+  Plug 'junegunn/fzf.vim'
+endif
+
 " Theme plugins
 Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline-themes'
 
 " Utility plugins
-Plug 'kien/ctrlp.vim'
 Plug 'ervandew/supertab'
 Plug 'vim-airline/vim-airline'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-sensible'
+Plug 'junegunn/vim-slash'
 Plug 'tpope/vim-sleuth'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-speeddating'
@@ -25,6 +31,7 @@ Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'saltstack/salt-vim'
 Plug 'nanki/treetop.vim'
 Plug 'kchmck/vim-coffee-script'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 Plug 'Shirk/vim-gas'
 Plug 'tpope/vim-git'
@@ -87,9 +94,6 @@ set wildignore=*.o,*.obj,.git,*.rbc,*.class,.svn, " We can't edit any of this, s
 au VimResized * :wincmd=                       " Resize splits when windows are resized... duh
 au VimLeave * set guicursor=a:ver100-blinkoff0 " Reset cursor on nvim exit
 
-" Ctrl-T brings up fuzzy file browser
-let g:ctrlp_map='<c-t>'
-
 " Shift-Command-{ and Shift-Command-} switch tabs
 nnoremap <D-}> :tabn<CR>
 nnoremap <D-{> :tabp<CR>
@@ -108,3 +112,6 @@ nmap <silent> <leader>T :TestFile<CR>
 nmap <silent> <leader>a :TestSuite<CR>
 nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>g :TestVisit<CR>
+
+" fzf
+noremap <c-t> :Files<CR>

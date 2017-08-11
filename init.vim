@@ -13,6 +13,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 " Utility plugins
 Plug 'ervandew/supertab'
+Plug 'vim-scripts/a.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'junegunn/vim-easy-align'
@@ -26,6 +27,7 @@ Plug 'tpope/vim-surround'
 Plug 'janko-m/vim-test'
 
 " Syntax plugins
+Plug 'w0rp/ale'
 Plug 'rosstimson/bats.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'saltstack/salt-vim'
@@ -69,19 +71,19 @@ set tabstop=2                        " Tabs == 2 spaces
 set undofile                         " Persist undo across sessions
 
 " Display
-colorscheme base16-chalk                                " Use this colorscheme
-let         g:airline_theme='base16_chalk'              " Use it for airline too
-let         g:vim_json_syntax_conceal=0                 " Don't screw with my JSON files
-set         background=dark                             " I use a dark background, so optimize for that
-set         colorcolumn=80                              " Mark column 80 so I don't code real stupid-like
-set         noerrorbells visualbell t_vb=               " I don't like to have seizures
-set         nofoldenable                                " Don't do any automatic folding because RAGEGUY
-set         number                                      " Show line numbers
-set         scrolloff=5                                 " Keep more context on the screen
-set         showmatch                                   " Show matching brackets, parenthesis, etc.
-set         splitbelow                                  " Horizontal splits should open below the current window
-set         splitright                                  " Vertical splits should open to the right of the current window
-syntax      on                                          " Highlight syntax
+colorscheme base16-chalk                   " Use this colorscheme
+let         g:airline_theme='base16_chalk' " Use it for airline too
+let         g:vim_json_syntax_conceal=0    " Don't screw with my JSON files
+set         background=dark                " I use a dark background, so optimize for that
+set         colorcolumn=80                 " Mark column 80 so I don't code real stupid-like
+set         noerrorbells visualbell t_vb=  " I don't like to have seizures
+set         nofoldenable                   " Don't do any automatic folding because RAGEGUY
+set         number                         " Show line numbers
+set         scrolloff=5                    " Keep more context on the screen
+set         showmatch                      " Show matching brackets, parenthesis, etc.
+set         splitbelow                     " Horizontal splits should open below the current window
+set         splitright                     " Vertical splits should open to the right of the current window
+syntax      on                             " Highlight syntax
 
 " Searching
 set ignorecase                                    " Ignore case
@@ -95,10 +97,10 @@ au VimResized * :wincmd=                       " Resize splits when windows are 
 au VimLeave * set guicursor=a:ver100-blinkoff0 " Reset cursor on nvim exit
 
 " Shift-Command-{ and Shift-Command-} switch tabs
-nnoremap <D-}> :tabn<CR>
-nnoremap <D-{> :tabp<CR>
-inoremap <D-}> <ESC>:tabn<CR>a
-inoremap <D-{> <ESC>:tabp<CR>a
+nnoremap <S-D-}> :tabn<CR>
+nnoremap <S-D-{> :tabp<CR>
+inoremap <S-D-}> <ESC>:tabn<CR>a
+inoremap <S-D-{> <ESC>:tabp<CR>a
 
 " EasyAlign mappings
 nmap ga <Plug>(EasyAlign)

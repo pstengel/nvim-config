@@ -46,6 +46,7 @@ Plug 'groenewege/vim-less'
 Plug 'tpope/vim-liquid'
 Plug 'plasticboy/vim-markdown'
 Plug 'rsmenon/vim-mathematica'
+Plug 'mustache/vim-mustache-handlebars'
 Plug 'moll/vim-node'
 Plug 'digitaltoad/vim-pug'
 Plug 'tpope/vim-rails'
@@ -117,3 +118,8 @@ nmap <silent> <leader>g :TestVisit<CR>
 
 " fzf
 noremap <c-t> :Files<CR>
+
+" ale
+let g:ale_pattern_options = {
+  \'.\.bats$': {'ale_enabled': 0},
+\}

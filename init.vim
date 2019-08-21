@@ -32,11 +32,13 @@ Plug 'rosstimson/bats.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'saltstack/salt-vim'
 Plug 'nanki/treetop.vim'
+Plug 'jwalton512/vim-blade'
 Plug 'kchmck/vim-coffee-script'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 Plug 'Shirk/vim-gas'
 Plug 'tpope/vim-git'
+Plug 'jez/vim-github-hub'
 Plug 'fatih/vim-go'
 Plug 'tpope/vim-haml'
 Plug 'pangloss/vim-javascript'
@@ -63,7 +65,7 @@ set secure " Don't hax me bra
 set lazyredraw " Don't redraw all the time to speed up the buffer
 
 " Editing
-set bs=2                             " Backspace over automatically indented things
+set backspace=indent,eol,start       " Backspace over automatically indented things
 set expandtab                        " Your tabs are now spaces
 set omnifunc=syntaxcomplete#Complete " Complete stuff for me
 set shiftwidth=2                     " Tabs == 2 spaces
@@ -72,19 +74,20 @@ set tabstop=2                        " Tabs == 2 spaces
 set undofile                         " Persist undo across sessions
 
 " Display
-colorscheme base16-chalk                   " Use this colorscheme
-let         g:airline_theme='base16_chalk' " Use it for airline too
-let         g:vim_json_syntax_conceal=0    " Don't screw with my JSON files
-set         background=dark                " I use a dark background, so optimize for that
-set         colorcolumn=80                 " Mark column 80 so I don't code real stupid-like
-set         noerrorbells visualbell t_vb=  " I don't like to have seizures
-set         nofoldenable                   " Don't do any automatic folding because RAGEGUY
-set         number                         " Show line numbers
-set         scrolloff=5                    " Keep more context on the screen
-set         showmatch                      " Show matching brackets, parenthesis, etc.
-set         splitbelow                     " Horizontal splits should open below the current window
-set         splitright                     " Vertical splits should open to the right of the current window
-syntax      on                             " Highlight syntax
+set background=light                   " Optimize colors for the theme
+let base16colorspace=256               " 256 colors are supported
+colorscheme base16-solarized-light     " Use this colorscheme
+let g:airline_theme='base16_solarized' " Use it for airline too
+let g:vim_json_syntax_conceal=0        " Don't screw with my JSON files
+set colorcolumn=80                     " Mark column 80 so I don't code real stupid-like
+set noerrorbells visualbell t_vb=      " I don't like to have seizures
+set nofoldenable                       " Don't do any automatic folding because RAGEGUY
+set number                             " Show line numbers
+set scrolloff=5                        " Keep more context on the screen
+set showmatch                          " Show matching brackets, parenthesis, etc.
+set splitbelow                         " Horizontal splits should open below the current window
+set splitright                         " Vertical splits should open to the right of the current window
+syntax on                              " Highlight syntax
 
 " Searching
 set ignorecase                                    " Ignore case
@@ -123,3 +126,8 @@ noremap <c-t> :Files<CR>
 let g:ale_pattern_options = {
   \'.\.bats$': {'ale_enabled': 0},
 \}
+
+let g:ale_ruby_rubocop_executable = 'bundle'
+
+" STFU, vim-go
+let g:go_version_warning = 0

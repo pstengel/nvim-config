@@ -48,3 +48,17 @@ Create symlinks to the NeoVim configuration managed by this repository.
 
 Remove symlinks for the NeoVim configuration managed by this repository only if
 the existing configuration is linked to using symlinks.
+
+## Random Notes Related to Code/Editing
+
+### Preferred Comment Markup Keywords
+
+| Keyword  | Description                                                                        |
+| -------- | ---------------------------------------------------------------------------------- |
+| BUG      | If the user inputs "Easter" we always output "Egg", even if they wanted a "Bunny". |
+| FIXME    | We sometimes get an undefined index in this array.                                 |
+| HACK     | I am doing something here that is horrible, but it works for now...                |
+| NOTE     | This is here because sometimes an intermittent issue appears.                      |
+| OPTIMIZE | This could be reworked to not do a O(N2) lookup.                                   |
+| TODO     | Add a check here to ensure these are always strings.                               |
+| XXX      | Let's do this better next time? It's bad.                                          |

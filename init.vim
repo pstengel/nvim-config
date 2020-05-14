@@ -75,20 +75,24 @@ set tabstop=2                        " Tabs == 2 spaces
 set undofile                         " Persist undo across sessions
 
 " Display
-set background=light                   " Optimize colors for the theme
-let base16colorspace=256               " 256 colors are supported
-colorscheme base16-solarized-light     " Use this colorscheme
-let g:airline_theme='base16_solarized' " Use it for airline too
-let g:vim_json_syntax_conceal=0        " Don't screw with my JSON files
-set colorcolumn=80                     " Mark column 80 so I don't code real stupid-like
-set noerrorbells visualbell t_vb=      " I don't like to have seizures
-set nofoldenable                       " Don't do any automatic folding because RAGEGUY
-set number                             " Show line numbers
-set scrolloff=5                        " Keep more context on the screen
-set showmatch                          " Show matching brackets, parenthesis, etc.
-set splitbelow                         " Horizontal splits should open below the current window
-set splitright                         " Vertical splits should open to the right of the current window
-syntax on                              " Highlight syntax
+set background=light              " Optimize colors for the theme
+let g:vim_json_syntax_conceal=0   " Don't screw with my JSON files
+set colorcolumn=100               " Mark column 100 so I don't code real stupid-like
+set noerrorbells visualbell t_vb= " I don't like to have seizures
+set nofoldenable                  " Don't do any automatic folding because RAGEGUY
+set number                        " Show line numbers
+set scrolloff=5                   " Keep more context on the screen
+set showmatch                     " Show matching brackets, parenthesis, etc.
+set splitbelow                    " Horizontal splits should open below the current window
+set splitright                    " Vertical splits should open to the right of the current window
+syntax on                         " Highlight syntax
+
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+
+  let g:airline_theme='base16_solarized' " The shell helper doesn't set this dynamically
+endif
 
 " Searching
 set ignorecase                                    " Ignore case
